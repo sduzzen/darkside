@@ -250,11 +250,11 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 ARCH		?= $(SUBARCH)
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
-HDK		:= /home/holyangel/android/Toolchains/sdclang-lin6.4.2/
-HDK_TC		:= /home/holyangel/android/Toolchains/sdclang-lin6.4.2/bin/
+DK		:= /home/alessandro/dark_project/sdclang-lin6.4.2/
+DK_TC		:= /home/alessandro/dark_project/sdclang-lin6.4.2/bin/
 ARCH		:= arm64
 SUBARCH		:= arm64
-CROSS_COMPILE	:= $(HDK_TC)aarch64-cortex_a57-linux-android-
+CROSS_COMPILE	:= $(DK_TC)aarch64-cortex_a57-linux-android-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -300,7 +300,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 	  else if [ -x /bin/bash ]; then echo /bin/bash; \
 	  else echo sh; fi ; fi)
 
-# HolyDragon Optimization Flags #
+# Darkside Optimization Flags #
 
 # Specific GCC Optimizations	  
 EXTRA_OPTS := \
@@ -320,8 +320,8 @@ ARM_ARCH_OPT := \
 	--param l1-cache-line-size=64 --param l1-cache-size=32 --param l2-cache-size=512 
 
 # Arm64 Architecture Specific Clang Flags
-CLANG_ARCH_OPT := \
-	-march=armv8-a -mcpu=kryo -mfloat-abi=hard -mfpu=crypto-neon-fp-armv8
+#CLANG_ARCH_OPT := \
+#	-march=armv8-a -mcpu=kryo -mfloat-abi=hard -mfpu=crypto-neon-fp-armv8
 
 # Optional Flags
 GEN_OPT_FLAGS := \
@@ -335,8 +335,8 @@ LLVM_FLAGS := \
 #Targetting Options
 LTO_TRIPLE = $(HDK_TC)lto-	
 LLVM_TRIPLE = $(HDK_TC)llvm-
-CLANG_TRIPLE = $(HDK_TC)clang $(CLANG_ARCH_OPT) $(LLVM_FLAGS) -flto --sysroot=$(HDK) --gcc-toolchain=$(CROSS_COMPILE)gcc
-CPP_TRIPLE = $(HDK_TC)clang++ $(CLANG_ARCH_OPT) $(LLVM_FLAGS) -Ofast -flto --sysroot=$(HDK) --gcc-toolchain=$(CROSS_COMPILE)gcc
+CLANG_TRIPLE = $(HDK_TC)clang  $(LLVM_FLAGS) -flto --sysroot=$(HDK) --gcc-toolchain=$(CROSS_COMPILE)gcc
+CPP_TRIPLE = $(HDK_TC)clang++  $(LLVM_FLAGS) -Ofast -flto --sysroot=$(HDK) --gcc-toolchain=$(CROSS_COMPILE)gcc
 
 #Clang specific compatibility
 CLANG_IA_FLAG += -no-integrated-as

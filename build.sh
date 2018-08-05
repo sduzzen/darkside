@@ -23,16 +23,16 @@
 ############################################################ 
 
 # Source defconfig used to build
-	dc=HD_defconfig
+	dc=DK_defconfig
 
 # Source Path to kernel tree
-	k=/home/holyangel/android/Kernels/OP3
+	k=/home/alessandro/dark_project/darkside
 
 # Source Path to clean(empty) out folder
 	co=$k/out
 
 # Compile Path to out 
-	o="O=/home/holyangel/android/Kernels/OP3/out"
+	o="O=/home/alessandro/dark_project/out"
 
 # Source Path to compiled Image.gz-dtb
 	i=$k/out/arch/arm64/boot/Image.gz-dtb
@@ -46,12 +46,10 @@
 # Source path for building kernel zip
 	zp=$k/build/
 	
-# Destination Path for uploading kernel zip
-	zu=$k/upload/
 
 # Kernel zip Name
 ##############################
-	kn=HDK_OP3_AK2_V6.1.0.zip
+	kn=DkSd_alpha_0.0.1.zip
 
 ############################################################
 # Cleanup
@@ -97,11 +95,6 @@
 #	find . -name "*.ko" -exec cp {} "$zm" \;
 	echo "	Copying kernel completed!"
 	
-############################################################
-# Generating Changelog to /build
-############################################################
-
-	./changelog
 
 ############################################################
 # Make zip and move to /upload
@@ -110,8 +103,6 @@
 	echo "	Making zip file.."
 	cd "$zp"
 	zip -r "$kn" *
-	echo "	Moving zip to upload directory"
-	mv "$kn" "$zu" 
 	echo "	Completed build script!"
 	echo "	Returning to start.."
 	cd "$k"

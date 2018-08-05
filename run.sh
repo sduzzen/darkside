@@ -24,16 +24,16 @@
 ############################################################ 
 
 # Source defconfig used to build
-	dc=HD_defconfig
+	dc=DK_defconfig
 
 # Source Path to kernel tree
-	k=/home/holyangel/android/Kernels/OP3
+	k=/home/alessandro/dark_project/darkside
 
 # Source Path to clean(empty) out folder
 	co=$k/out
 
 # Compile Path to out 
-	o="O=/home/holyangel/android/Kernels/OP3/out"
+	o="O=/home/alessandro/dark_project/out"
 
 ############################################################
 # Cleanup
